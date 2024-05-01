@@ -82,5 +82,7 @@ if [ $USE_RUNONCE -gt 0 ]; then
 fi
 
 echo "Enabling and starting agent"
-systemctl enable vsts.agent.$AZURE_PROJECT.$POOL.$AGENT_USER
-systemctl start vsts.agent.$AZURE_PROJECT.$POOL.$AGENT_USER
+# remove .service from the name SVC_NAME
+SVC_NAME=${SVC_NAME%.service}
+systemctl enable $SVC_NAME
+systemctl start $SVC_NAME

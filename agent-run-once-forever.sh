@@ -23,7 +23,7 @@ AGENT_EXIT_CODE=0
 run_agent_for_one_job () {
   local RUN_AS_AGENT_USER=$1
   local INSTALL_DIR=$2
-  gosu $RUN_AS_AGENT_USER bash -c "cd $INSTALL_DIR && ./run.sh --once"
+  su $RUN_AS_AGENT_USER bash -c "cd $INSTALL_DIR && ./run.sh --once"
   AGENT_EXIT_CODE=$?
 }
 

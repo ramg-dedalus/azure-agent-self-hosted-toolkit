@@ -38,8 +38,6 @@ if [ -z "$DOCKER_NETWORK_MTU" ]; then
   exit 1
 fi
 
-echo "adding user"
-useradd $AGENT_USER -m
 usermod -a -G docker $AGENT_USER
 export AGENT_USER_HOME=/home/$AGENT_USER
 export AGENT_INSTALL_DIR=$AGENT_USER_HOME/agent

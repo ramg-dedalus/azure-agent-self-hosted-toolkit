@@ -73,7 +73,7 @@ if [ $USE_RUNONCE -gt 0 ]; then
   SVC_NAME=`systemd-escape --path "vsts.agent.$AZURE_PROJECT.$POOL.$AGENT_USER.service"`
   UNIT_FILE_PATH=/etc/systemd/system/${SVC_NAME}
 
-  ESCAPED_RUN_ONCE_PATH='\/opt\/azure-agent-setup\/agent-run-once-forever\.sh'
+  ESCAPED_RUN_ONCE_PATH='\/home/$AGENT_USER\/azure-agent-setup\/agent-run-once-forever\.sh'
   sed -i -E "s/^(ExecStart=).*$/\1$ESCAPED_RUN_ONCE_PATH $AGENT_USER/" $UNIT_FILE_PATH
   # we run the startup script as root and drop privileges later. This way we can ensure that the workdir clean
   # does not run into any file permission issues since it runs as root

@@ -70,7 +70,7 @@ cd $AGENT_USER_HOME/agent/
 if [ $USE_RUNONCE -gt 0 ]; then
   echo "Manipulating system-unit file to use agent-run-once-forever.sh"
   # this is the path patter we borrowed from svc.sh
-  SVC_NAME=`systemd-escape --path "vsts.agent.$AZURE_PROJECT.$POOL.$AGENT_USER.service"`
+  SVC_NAME=`systemd-escape --path "vsts.agent.$AZURE_PROJECT.$POOL.$VM_NAME.service"`
   # Replace '-' in the name with '\x2d' to match the file name
   SVC_NAME=`echo $SVC_NAME | sed 's/-/\\x2d/g'`
   UNIT_FILE_PATH=/etc/systemd/system/${SVC_NAME}
